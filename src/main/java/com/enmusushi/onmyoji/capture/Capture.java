@@ -24,27 +24,12 @@ public class Capture {
         }
         if (process != null) {
             InputStream inputStream = process.getInputStream();
-            File file = new File("C:\\Users\\Enmusushi\\Desktop\\test.png");
-            BufferedReader br = null;
-            try {
-                br = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            try {
 
+            File file = new File("/home/enmusushi/Desktop/test.png");
+            try {
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
-
-                String line = br.readLine();
-                while (line != null && line.length() > 0) {
-                    System.out.println(line);
-                    bw.write(line);
-                    bw.newLine();
-                    line = br.readLine();
-                }
-                br.close();
-                bw.close();
+                long bytes = inputStream.transferTo(fileOutputStream);
+                System.out.println(bytes);
                 inputStream.close();
                 fileOutputStream.close();
             } catch (FileNotFoundException e) {
@@ -56,8 +41,8 @@ public class Capture {
     }
 
     public static void main(String[] args) {
-        // Capture.capture();
-        Capture.test();
+        Capture.capture();
+        //Capture.test();
     }
 
     public static void test() {
