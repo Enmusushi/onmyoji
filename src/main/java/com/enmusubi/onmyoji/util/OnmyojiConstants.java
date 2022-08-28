@@ -1,4 +1,4 @@
-package com.enmusushi.onmyoji.util;
+package com.enmusubi.onmyoji.util;
 
 /**
  * @author Enmusushi

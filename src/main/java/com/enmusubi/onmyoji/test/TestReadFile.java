@@ -1,4 +1,4 @@
-package com.enmusushi.onmyoji.test;
+package com.enmusubi.onmyoji.test;
 
 import java.io.File;
 import java.io.FileInputStream;

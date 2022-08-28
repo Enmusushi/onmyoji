@@ -1,12 +1,7 @@
-package com.enmusushi.onmyoji.event;
+package com.enmusubi.onmyoji.event;
 
-import com.enmusushi.onmyoji.robot.EndBattleClicker;
-import com.enmusushi.onmyoji.util.ExecClicker;
-import com.enmusushi.onmyoji.util.OnmyojiConstants;
+import com.enmusubi.onmyoji.util.ExecClicker;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**

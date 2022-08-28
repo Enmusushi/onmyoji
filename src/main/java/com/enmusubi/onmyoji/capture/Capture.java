@@ -1,6 +1,4 @@
-package com.enmusushi.onmyoji.capture;
-
-import com.enmusushi.onmyoji.util.OnmyojiConstants;
+package com.enmusubi.onmyoji.capture;
 
 import java.io.*;
 
@@ -25,9 +23,11 @@ public class Capture {
         if (process != null) {
             InputStream inputStream = process.getInputStream();
 
-            File file = new File("/home/enmusushi/Desktop/test.png");
+            File file = new File("C:\\Users\\Enmusushi\\Desktop\\test.png");
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
+                byte[] bytes1 = inputStream.readAllBytes();
+                fileOutputStream.write(bytes1);
                 long bytes = inputStream.transferTo(fileOutputStream);
                 System.out.println(bytes);
                 inputStream.close();

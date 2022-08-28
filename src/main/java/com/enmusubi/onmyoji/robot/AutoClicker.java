@@ -1,4 +1,4 @@
-package com.enmusushi.onmyoji.robot;
+package com.enmusubi.onmyoji.robot;
 
 import java.awt.*;
 
