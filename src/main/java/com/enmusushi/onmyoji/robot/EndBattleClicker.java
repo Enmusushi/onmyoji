@@ -1,7 +1,7 @@
-package com.enmusubi.onmyoji.robot;
+package com.enmusushi.onmyoji.robot;
 
-import com.enmusubi.onmyoji.util.ExecClicker;
-import com.enmusubi.onmyoji.util.OnmyojiConstants;
+import com.enmusushi.onmyoji.util.ExecClicker;
+import com.enmusushi.onmyoji.util.OnmyojiConstants;
 
 import java.util.Random;
 

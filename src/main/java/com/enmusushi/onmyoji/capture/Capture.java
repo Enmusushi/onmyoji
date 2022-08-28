@@ -1,4 +1,4 @@
-package com.enmusubi.onmyoji.capture;
+package com.enmusushi.onmyoji.capture;
 
 import java.io.*;
 

@@ -1,6 +1,6 @@
-package com.enmusubi.onmyoji.event;
+package com.enmusushi.onmyoji.event;
 
-import com.enmusubi.onmyoji.util.ExecClicker;
+import com.enmusushi.onmyoji.util.ExecClicker;
 
 import java.util.Random;
 

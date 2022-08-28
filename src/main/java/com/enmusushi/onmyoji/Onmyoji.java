@@ -1,6 +1,6 @@
 package com.enmusushi.onmyoji;
 
-import com.enmusubi.onmyoji.event.TotemThread;
+import com.enmusushi.onmyoji.event.TotemThread;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
