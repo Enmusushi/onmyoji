@@ -1,3 +1,6 @@
+import random
+
+
 class ExploreFight:
 
     def next_scene(self):
