@@ -2,3 +2,4 @@ numpy
 opencv_python
 Pillow
 opencv_contrib_python
+matplotlib

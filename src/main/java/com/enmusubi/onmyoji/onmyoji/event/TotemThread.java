@@ -1,6 +1,6 @@
-package com.enmusushi.onmyoji.event;
+package com.enmusubi.onmyoji.onmyoji.event;
 
-import com.enmusushi.onmyoji.util.OnmyojiConstants;
+import com.enmusubi.onmyoji.onmyoji.util.OnmyojiConstants;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

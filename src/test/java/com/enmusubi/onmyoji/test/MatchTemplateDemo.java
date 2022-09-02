@@ -117,9 +117,16 @@ class MatchTemplateDemoRun implements ChangeListener {
         Imgproc.rectangle(result, matchLoc, new Point(matchLoc.x + templ.cols(), matchLoc.y + templ.rows()),
                 new Scalar(0, 0, 0), 2, 8, 0);
 
-        Image tmpImg = HighGui.toBufferedImage(img_display);
+
+        Mat testImg = TestReadFile.testMat();
+
+        //Image tmpImg = HighGui.toBufferedImage(img_display);
+        Image tmpImg = HighGui.toBufferedImage(testImg);
         ImageIcon icon = new ImageIcon(tmpImg);
         imgDisplay.setIcon(icon);
+
+
+
 
         result.convertTo(result, CvType.CV_8UC1, 255.0);
         tmpImg = HighGui.toBufferedImage(result);
