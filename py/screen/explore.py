@@ -65,11 +65,13 @@ class Explore:
             img = screen.screencap()
             lt = screen.match_template_return_lt(img, self.quit_png)
             if lt is not None:
-                click_random_point(lt, self.quit_png)
-                img = screen.screencap()
-                lt = screen.match_template_return_lt(img, self.ok_png)
-                if lt is not None:
-                    click_random_point(lt, self.ok_png)
+                sakura_png = screen.match_template_return_lt(img, self.sakura_mochi_png)
+                if sakura_png is not None:
+                    click_random_point(lt, self.quit_png)
+                    img = screen.screencap()
+                    lt = screen.match_template_return_lt(img, self.ok_png)
+                    if lt is not None:
+                        click_random_point(lt, self.ok_png)
 
     def find_monster(self):
         screen_img = screen.screencap()
