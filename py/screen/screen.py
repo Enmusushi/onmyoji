@@ -1,17 +1,21 @@
 import os
 import subprocess
+import sys
+
 import cv2 as cv
 import random
 import time
 import numpy as np
-from matplotlib import pyplot as plt
+
+
+# from matplotlib import pyplot as plt
 
 
 def screencap():
     time.sleep(1)
-    res = os.system("adb shell screencap -p /sdcard/screen.png")
+    res = os.system("adb shell screencap -p /sdcard/tmp/test.png")
     if res == 0:
-        res = os.system("adb pull /sdcard/screen.png .")
+        res = os.system("adb pull /sdcard/tmp/test.png .")
         if res == 0:
             return cv.imread('screen.png', 0)
     return None
@@ -84,18 +88,21 @@ def main():
 
 
 def main_test_no_file():
-    screen_img = os.popen('adb shell screencap -p')
+    screen_img = os.popen('./adbexec')
     print(screen_img.encoding)
-    res = subprocess.run('adb shell screencap -p', capture_output=True)
+    res = subprocess.run('./adbexec', capture_output=True)
     bng_bytes = res.stdout
-    f = open("test.png", "wb")
-    f.write(bng_bytes)
-    f.close()
-    cv.bootstrap()
-    img = cv.imread('test.png')
+    img = cv.imdecode(np.array(bytearray(bng_bytes), dtype='uint8'), cv.IMREAD_UNCHANGED)
+    # f = open("test.png", "wb")
+    # f.write(bng_bytes)
+    # f.close()
+    # cv.bootstrap()
+    # img = cv.imread('test.png')
     print(img)
-    print(cv)
+    # print(cv)
+    cv.imshow('image', img)
+    cv.waitKey()
 
 
 if __name__ == '__main__':
-    main()
+    main_test_no_file()
