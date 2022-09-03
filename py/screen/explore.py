@@ -28,6 +28,7 @@ class Explore:
         self.chapter_28_png = cv.imread('chapter28.png', 0)
         self.is_end_explore = True
         self.scene_switch_times = 0
+        self.click_count = 0
 
     def fight_in_explore(self):
         while True:
@@ -74,6 +75,8 @@ class Explore:
                         click_random_point(lt, self.ok_png)
 
     def find_monster(self):
+        if self.click_count == 50:
+            return
         screen_img = screen.screencap()
         if screen_img is not None:
             if self.is_end_explore is True:
@@ -98,6 +101,7 @@ class Explore:
         dx = random.randint(lt[0], lt[0] + w)
         dy = random.randint(lt[1], lt[1] + h)
         screen.click_point(dx, dy)
+        self.click_count += 1
         time.sleep(2)
         self.check_battle_end()
 
@@ -119,11 +123,12 @@ class Explore:
             time.sleep(1)
 
     def find_boss(self, screen_img):
-        w, h = self.boss_png.shape[::-1]
+        # w, h = self.boss_png.shape[::-1]
         res = screen.match_template(screen_img, self.boss_png)
         if res is not None:
             screen.click_point(res[0], res[1])
             # cv.rectangle(screen_img, res, (res[0] + w, res[1] + h), (0, 0, 255), 2)
+            time.sleep(2)
             self.check_battle_end()
             self.is_end_explore = True
 
