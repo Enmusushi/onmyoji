@@ -108,6 +108,7 @@ def screen_cap_from_phone():
     res = subprocess.run(args=['adb', 'shell', 'screencap', ' -p'], capture_output=True)
     bng_bytes = res.stdout
     print(bng_bytes)
+    return bng_bytes
 
 
 if __name__ == '__main__':
