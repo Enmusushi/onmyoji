@@ -88,21 +88,27 @@ def main():
 
 
 def main_test_no_file():
-    screen_img = os.popen('./adbexec')
-    print(screen_img.encoding)
-    res = subprocess.run('./adbexec', capture_output=True)
+    res = subprocess.run(args=['adb', 'shell', 'screencap', ' -p'], capture_output=True)
     bng_bytes = res.stdout
-    img = cv.imdecode(np.array(bytearray(bng_bytes), dtype='uint8'), cv.IMREAD_UNCHANGED)
+    bng_bytes_array = bytearray(bng_bytes)
+    bng_np_bytes_array = np.array(bng_bytes_array, dtype='uint8')
+    img = cv.imdecode(bng_np_bytes_array, cv.IMREAD_UNCHANGED)
+    cv.imshow('image', img)
+    cv.waitKey()
     # f = open("test.png", "wb")
     # f.write(bng_bytes)
     # f.close()
-    # cv.bootstrap()
     # img = cv.imread('test.png')
-    print(img)
+    # print(img)
     # print(cv)
-    cv.imshow('image', img)
-    cv.waitKey()
+    # cv.imwrite('test.png', img)
+
+
+def screen_cap_from_phone():
+    res = subprocess.run(args=['adb', 'shell', 'screencap', ' -p'], capture_output=True)
+    bng_bytes = res.stdout
+    print(bng_bytes)
 
 
 if __name__ == '__main__':
-    main_test_no_file()
+    screen_cap_from_phone()
