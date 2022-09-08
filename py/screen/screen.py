@@ -13,12 +13,12 @@ import numpy as np
 
 def screencap():
     time.sleep(1)
-    res = os.system("adb shell screencap -p /sdcard/tmp/test.png")
-    if res == 0:
-        res = os.system("adb pull /sdcard/tmp/test.png .")
-        if res == 0:
-            return cv.imread('screen.png', 0)
-    return None
+    res = subprocess.run(args=['adb', 'exec-out', 'screencap', '-p'], capture_output=True)
+    bng_bytes = res.stdout
+    bng_bytes_array = bytearray(bng_bytes)
+    bng_np_bytes_array = np.array(bng_bytes_array, dtype='uint8')
+    img = cv.imdecode(bng_np_bytes_array, cv.IMREAD_GRAYSCALE)
+    return img
 
 
 def click_point(dx, dy):
@@ -88,7 +88,7 @@ def main():
 
 
 def main_test_no_file():
-    res = subprocess.run(args=['adb', 'shell', 'screencap', ' -p'], capture_output=True)
+    res = subprocess.run(args=['adb', 'exec-out', 'screencap', '-p'], capture_output=True)
     bng_bytes = res.stdout
     bng_bytes_array = bytearray(bng_bytes)
     bng_np_bytes_array = np.array(bng_bytes_array, dtype='uint8')
@@ -105,11 +105,16 @@ def main_test_no_file():
 
 
 def screen_cap_from_phone():
-    res = subprocess.run(args=['adb', 'shell', 'screencap', ' -p'], capture_output=True)
+    res = subprocess.run(args=['adb', 'exec-out', 'screencap', '-p'], capture_output=True)
     bng_bytes = res.stdout
+    f = open("test.png", "wb")
+    f.write(bng_bytes)
+    f.close()
     print(bng_bytes)
     return bng_bytes
 
 
 if __name__ == '__main__':
-    screen_cap_from_phone()
+    # main_test_no_file()
+    img = screencap()
+    print(img)
