@@ -1,3 +1,5 @@
+import logging
+
 import cv2 as cv
 import screen
 import numpy as np
@@ -42,7 +44,8 @@ class Explore:
                 time.sleep(2)
 
     def enter_explore(self):
-        print('enter in explore ... ')
+        # print('enter in explore ... ')
+        logging.info("进入探索中...")
         img = screen.screencap()
         if img is not None:
             left_top = screen.match_template_return_lt(img, self.chapter_28_png)
@@ -60,6 +63,8 @@ class Explore:
                     self.is_end_explore = False
                 else:
                     self.enter_explore()
+            else:
+                logging.info("还没进入探索！")
 
     def quit_explore(self):
         if self.is_end_explore is True:
@@ -85,6 +90,7 @@ class Explore:
             lt = screen.match_template_return_lt(screen_img, self.monster_png)
             if lt is not None:
                 w, h = self.monster_png.shape[::-1]
+                logging.info("进入战斗")
                 self.battle(lt, w, h)
                 self.find_monster()
             else:
@@ -116,6 +122,7 @@ class Explore:
             if sakura is not None:
                 return
             else:
+                logging.info("奖励页面，点击结束")
                 self.check_battle_end()
         else:
             # 随机点击屏幕一下,不能随机点

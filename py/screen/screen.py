@@ -6,9 +6,11 @@ import cv2 as cv
 import random
 import time
 import numpy as np
-
+import logging
 
 # from matplotlib import pyplot as plt
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s : %(levelname)s %(funcName)s-%(lineno)s : %(message)s ', )
 
 
 def screencap():
@@ -22,7 +24,7 @@ def screencap():
 
 
 def click_point(dx, dy):
-    print("click {} {} ".format(dx, dy))
+    logging.info("click {} {} ".format(dx, dy))
     os.system("adb shell input tap {} {}".format(dx, dy))
 
 
@@ -47,10 +49,7 @@ def match_template_return_lt(img, template):
     if max_loc >= threshold:
         loc = np.where(res >= max_loc)
         for lt in zip(*loc[::-1]):
-            w, h = template.shape[::-1]
-            cv.rectangle(img, lt, (lt[0] + w, lt[1] + h), (0, 0, 255), 2)
-            print(lt)
-            # cv.imwrite('res.png', img)
+            logging.info("找到的坐标：{} {}".format(lt[0], lt[1]))
             return lt
     return None
 
@@ -116,5 +115,4 @@ def screen_cap_from_phone():
 
 if __name__ == '__main__':
     # main_test_no_file()
-    img = screencap()
-    print(img)
+    screencap()
