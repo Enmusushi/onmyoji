@@ -5,7 +5,7 @@ img = cv.imread('pikaqiu.png', 0)
 
 template = cv.imread('template.png', 0)
 w, h = template.shape[::-1]
-res = cv.matchTemplate(img, template, cv.TM_SQDIFF)
+res = cv.matchTemplate(img, template, cv.TM_CCOEFF_NORMED)
 min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
 left_top = min_loc
 right_bottom = (left_top[0] + w, left_top[1] + h)
